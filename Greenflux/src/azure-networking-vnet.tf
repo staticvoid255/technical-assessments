@@ -8,13 +8,13 @@ resource "azurerm_virtual_network" "test" {
   subnet {
     name           = "subnet-default"
     address_prefix = "10.0.1.0/24"
-    security_group = azurerm_network_security_group.nsg_default.id
+    security_group = azurerm_network_security_group.main.id
   }
 
   subnet {
     name           = "subnet-default"
     address_prefix = "10.0.2.0/24"
-    security_group = azurerm_network_security_group.nsg_default.id
+    security_group = azurerm_network_security_group.main.id
   }
 
   tags = {
@@ -50,7 +50,7 @@ resource "azurerm_virtual_network" "acceptance" {
   subnet {
     name           = "subnet-default"
     address_prefix = "10.1.1.0/24"
-    security_group = azurerm_network_security_group.nsg_default.id
+    security_group = azurerm_network_security_group.main.id
   }
 
   tags = {
