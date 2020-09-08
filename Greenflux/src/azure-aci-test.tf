@@ -17,7 +17,7 @@ resource "azurerm_container_group" "aci_cg_test" {
         "server": "8.8.4.4"
     } 
 
-    secure_environment_variables = [] //Use for sensitive data
+    secure_environment_variables = {} //Use for sensitive data
 
     ports {
       port     = 53 //Port 53 also specified in Dockerfile
