@@ -3,9 +3,6 @@
 Terraform deployments on Azure written to-spec as contained in the brief.
 Took the liberty to use Terraform instead of Powershell or Bash for better manageability.
 
-Tools:
-* 
-
 ## How to use:
 Cd to the clone directory and run:
 ```bash
