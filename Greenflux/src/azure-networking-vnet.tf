@@ -7,7 +7,13 @@ resource "azurerm_virtual_network" "vnet_test" {
 
   subnet {
     name           = "subnet-default"
-    address_prefix = "10.0.3.0/24"
+    address_prefix = "10.0.1.0/24"
+    security_group = azurerm_network_security_group.nsg_default.id
+  }
+
+  subnet {
+    name           = "subnet-default"
+    address_prefix = "10.0.2.0/24"
     security_group = azurerm_network_security_group.nsg_default.id
   }
 
@@ -25,7 +31,7 @@ resource "azurerm_virtual_network" "vnet_acc" {
 
   subnet {
     name           = "subnet-default"
-    address_prefix = "10.0.3.0/24"
+    address_prefix = "10.0.1.0/24"
     security_group = azurerm_network_security_group.nsg_default.id
   }
 

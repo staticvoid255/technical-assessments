@@ -8,7 +8,7 @@ variable "admin_password" {
 }
 
 resource "azurerm_virtual_machine" "vm_deploy_acc" {
-  name                  = "${var.prefix}-vm"
+  name                  = "vm-acc-default"
   location              = azurerm_resource_group.main.location
   resource_group_name   = azurerm_resource_group.main.name
   network_interface_ids = [azurerm_network_interface.main.id]
@@ -33,7 +33,7 @@ resource "azurerm_virtual_machine" "vm_deploy_acc" {
     managed_disk_type = "Standard_LRS"
   }
   os_profile {
-    computer_name  = "hostname"
+    computer_name  = "azurevm"
     admin_username = var.admin_username
     admin_password = var.admin_password
   }
