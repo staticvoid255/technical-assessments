@@ -1,3 +1,5 @@
+// This file for generic, reusable variables - keep resource-specific ones with the resource itself
+
 variable "location" {
   type    = string
   default = "West Europe"

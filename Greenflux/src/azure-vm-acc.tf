@@ -1,3 +1,12 @@
+variable "admin_username" {
+  type    = string
+  default = "admin"
+}
+
+variable "admin_password" {
+  type    = string
+}
+
 resource "azurerm_virtual_machine" "vm_deploy_acc" {
   name                  = "${var.prefix}-vm"
   location              = azurerm_resource_group.main.location
@@ -18,15 +27,15 @@ resource "azurerm_virtual_machine" "vm_deploy_acc" {
     version   = "latest"
   }
   storage_os_disk {
-    name              = "myosdisk1"
+    name              = "default"
     caching           = "ReadWrite"
     create_option     = "FromImage"
     managed_disk_type = "Standard_LRS"
   }
   os_profile {
     computer_name  = "hostname"
-    admin_username = "testadmin"
-    admin_password = "Password1234!"
+    admin_username = var.admin_username
+    admin_password = var.admin_password
   }
   os_profile_linux_config {
     disable_password_authentication = false
