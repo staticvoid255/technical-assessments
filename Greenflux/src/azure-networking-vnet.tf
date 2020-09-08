@@ -22,7 +22,21 @@ resource "azurerm_virtual_network" "test" {
   }
 }
 
-resource "azurerm_virtual_network" "vnet_acc" {
+resource "azurerm_virtual_network_peering" "test_acc" {
+  name                      = "vnet-peering-test-acc"
+  resource_group_name       = azurerm_resource_group.main.name
+  virtual_network_name      = azurerm_virtual_network.test.name
+  remote_virtual_network_id = azurerm_virtual_network.acceptance.id
+}
+
+resource "azurerm_virtual_network_peering" "acc_test" {
+  name                      = "vnet-peering-acc-test"
+  resource_group_name       = azurerm_resource_group.main.name
+  virtual_network_name      = azurerm_virtual_network.acceptance.name
+  remote_virtual_network_id = azurerm_virtual_network.test.id
+}
+
+resource "azurerm_virtual_network" "acceptance" {
   name                = "solar-impulse-acc"
   location            = var.location
   resource_group_name = var.resource_group_name
